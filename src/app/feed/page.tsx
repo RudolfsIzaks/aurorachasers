@@ -1,7 +1,7 @@
 "use client"
 
 import FeedWidget from "@/components/feedWidget";
-import { useAuth } from "./layout";
+import { useAuth } from "./AuthProvider";
 import { format } from "date-fns";
 
 export default function FeedPage() {

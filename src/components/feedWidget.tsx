@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { ThumbsUp, MessageCircle } from "lucide-react";
-import { useAuth } from "@/app/feed/layout";
+import { useAuth } from "@/app/feed/AuthProvider";
 import { Avatar, AvatarFallback } from "./ui/avatar";
 import { format } from "date-fns";
 import { Input } from "@/components/ui/input";

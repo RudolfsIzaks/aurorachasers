@@ -17,7 +17,7 @@ import {
   SidebarRail,
 } from "@/components/ui/sidebar";
 import { Separator } from "./ui/separator";
-import { useAuth } from "@/app/feed/layout";
+import { useAuth } from "@/app/feed/AuthProvider";
 import { Button } from "./ui/button";
 
 // This is sample data.

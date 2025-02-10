@@ -5,7 +5,7 @@ import {
   CardFooter,
   CardHeader,
 } from "@/components/ui/card";
-import { useAuth } from "../layout";
+import { useAuth } from "../AuthProvider";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import { useState } from "react";
 import { Input } from "@/components/ui/input";
