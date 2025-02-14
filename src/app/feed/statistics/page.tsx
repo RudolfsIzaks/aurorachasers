@@ -11,10 +11,10 @@ import Image from "next/image";
 
 export default function AuroraMapPage() {
   return (
-    <div className="mx-10 flex justify-center">
+    <div className="md:mx-10 mx-5 flex justify-center">
       <div className="max-w-[1200px] mt-20">
         <p className="text-3xl font-bold">Aurora Forecasts</p>
-        <div className="grid gap-10 grid-cols-2 mt-5">
+        <div className="grid gap-10 md:grid-cols-2 grid-cols-1 mt-5">
           <Card className="max-w-md bg-transparent">
             <CardHeader>
               <CardTitle className="flex gap-3 items-center">
@@ -69,7 +69,7 @@ export default function AuroraMapPage() {
               />
             </CardContent>
           </Card>
-          <div className="col-span-2 mb-10">
+          <div className="md:col-span-2 mb-10">
             <KpChart />
           </div>
         </div>

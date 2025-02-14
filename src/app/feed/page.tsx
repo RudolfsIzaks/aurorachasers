@@ -11,7 +11,7 @@ export default function FeedPage() {
     const joined_formatted = format(joined_at, "MMM d, yyyy");
 
   return (
-     <div className="mx-10">
+     <div className="md:mx-10 mx-2">
       <div className="flex items-center justify-center">
         <FeedWidget/>
       </div>

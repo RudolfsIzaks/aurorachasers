@@ -83,7 +83,7 @@ export default function FeedWidget() {
   };
 
   return (
-    <div className="p-6 overflow-y-scroll scrollbar-hide max-h-[90dvh]">
+    <div className="md:p-6 overflow-y-scroll scrollbar-hide max-h-[90dvh] md:scale-100 lg:scale-100 scale-90">
       <p className="my-5 text-2xl">Night Skies By Users</p>
       <div className="grid gap-4">
         {posts.map((post) => (
@@ -103,7 +103,7 @@ export default function FeedWidget() {
               <img
                 src={post.image_url}
                 alt={post.title}
-                className="rounded-lg mb-3 max-w-lg"
+                className="rounded-lg mb-3 md:max-w-lg lg:max-w-lg max-w-xs"
               />
             )}
             <p>{post.description}</p>

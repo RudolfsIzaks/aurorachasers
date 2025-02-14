@@ -48,11 +48,11 @@ export default function CreatePostPage() {
   };
 
   return (
-    <div className="mx-10 flex justify-center">
-      <div className="max-w-[1200px] mt-20">
+    <div className="md:mx-10 mx-3 flex justify-center">
+      <div className="max-w-[1200px] my-20">
         <form onSubmit={handleSubmit}>
           <p className="font-bold text-xl">Post Aurora</p>
-          <Card className="bg-transparent w-[400px]">
+          <Card className="bg-transparent md:w-[400px]">
             <CardHeader>
               <div className="flex items-center justify-between flex-row-reverse gap-2">
                 <Avatar>
