@@ -7,7 +7,7 @@ import {
 } from "@/components/ui/card";
 import { useAuth } from "../AuthProvider";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Input } from "@/components/ui/input";
 import { Separator } from "@/components/ui/separator";
 import { Button } from "@/components/ui/button";
@@ -25,6 +25,39 @@ export default function CreatePostPage() {
   const router = useRouter();
   const poster_name = userParams.username;
 
+  const inputRef = useRef<HTMLInputElement>(null);
+
+  useEffect(() => {
+    const handlePaste = (e: ClipboardEvent) => {
+      const items = e.clipboardData?.items;
+      if (!items) return;
+
+      for (let item of items) {
+        if (item.type.indexOf("image") !== -1) {
+          const blob = item.getAsFile();
+          const reader = new FileReader();
+          reader.onload = (event) => {
+            const base64 = event.target?.result as string;
+            setImageUrl(base64);
+          };
+          if (blob) reader.readAsDataURL(blob);
+          e.preventDefault(); // prevent default paste behavior
+        }
+      }
+    };
+
+    const input = inputRef.current;
+    if (input) {
+      input.addEventListener("paste", handlePaste as any);
+    }
+
+    return () => {
+      if (input) {
+        input.removeEventListener("paste", handlePaste as any);
+      }
+    };
+  }, []);
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setError("");
@@ -34,7 +67,13 @@ export default function CreatePostPage() {
     const response = await fetch("/api/posts", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ user_id, title, description, image_url, poster_name }),
+      body: JSON.stringify({
+        user_id,
+        title,
+        description,
+        image_url,
+        poster_name,
+      }),
     });
 
     const data = await response.json();
@@ -78,15 +117,28 @@ export default function CreatePostPage() {
             </CardHeader>
             <Separator />
             <CardContent>
-              <div className="border h-[20dvh] rounded-md mt-5 dark:bg-dot-white/[0.1] bg-dot-black/[0.1] flex items-center justify-center">
+              <div
+                className={`border h-[20dvh] rounded-md mt-5 flex items-center justify-center transition-all ${
+                  image_url ? "" : "dark:bg-dot-white/[0.1]"
+                }`}
+                style={
+                  image_url
+                    ? { backgroundImage: `url(${image_url})`,
+                        backgroundPosition: 'center',
+                        backgroundSize: 'cover',
+                   }
+                    : undefined
+                }
+              >
                 <Input
+                  ref={inputRef}
                   id="image_url"
                   type="text"
-                  placeholder="Image URL"
+                  placeholder="Image URL or paste image"
                   required
                   value={image_url}
                   onChange={(e) => setImageUrl(e.target.value)}
-                  className="my-2 w-4/5"
+                  className="my-2 w-4/5  backdrop-blur-md"
                 />
               </div>
               <div>

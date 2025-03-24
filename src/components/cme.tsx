@@ -109,7 +109,7 @@ export default function CMEForecast() {
                 Live Data from NASA <TrendingUp className="h-4 w-4" />
               </div>
               <div className="flex items-center gap-2 leading-none text-muted-foreground">
-                Updated every a few times a day.
+                Updated few times a day.
               </div>
             </div>
           </div>

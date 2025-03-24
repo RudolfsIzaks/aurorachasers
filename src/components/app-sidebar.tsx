@@ -53,12 +53,12 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
 
   return (
     <Sidebar {...props}>
-      <SidebarHeader>
+      <SidebarHeader className="bg-background">
         <p className="text-2xl font-black px-2 py-[14px]">Main Menu</p>
       </SidebarHeader>
       <Separator/>
-      <SidebarContent className="bg-transparent">
-        <SidebarGroup className="bg-transparent">
+      <SidebarContent className="bg-background">
+        <SidebarGroup className="bg-background">
           <SidebarGroupContent>
             <SidebarMenu>
               {data.navMain.map((item) => (

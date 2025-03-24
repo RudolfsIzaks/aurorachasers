@@ -3,7 +3,7 @@
 import { useAuth } from "./AuthProvider"; // ✅ Import useAuth correctly
 import { useRouter } from "next/navigation";
 import { format } from "date-fns";
-import { SidebarProvider } from "@/components/ui/sidebar";
+import { SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar";
 import { SidebarInset } from "@/components/ui/sidebar";
 import { Button } from "@/components/ui/button";
 import { Plus, User, Key } from "lucide-react";
@@ -28,6 +28,7 @@ export default function FeedLayoutContent({ children }: { children: React.ReactN
       <main className="flex w-full min-h-screen">
         <div className="flex-grow overflow-auto">
           <SidebarInset className="flex flex-col h-full">
+            <SidebarTrigger className="absolute right-6 top-24 z-50"/>
             <header className="sticky top-0 z-10 bg-background">
               <div className="flex items-center justify-between py-5 px-10">
                 <p className="font-black text-3xl">
@@ -88,7 +89,7 @@ export default function FeedLayoutContent({ children }: { children: React.ReactN
             <div className="flex-grow overflow-auto">{children}</div>
           </SidebarInset>
         </div>
-        <AppSidebar side="right" className="bg-transparent" />
+        <AppSidebar side="right" className="bg-background" />
         <Button variant="default" className="fixed bottom-5 left-5" onClick={handlePost}>
           Post <Plus />
         </Button>
